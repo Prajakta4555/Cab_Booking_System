@@ -46,7 +46,7 @@
 
             <div class="col-3 ">
               <div class="site-logo">
-                <h2><a href="login.html">Rent a Ride</a></h2>
+                <h2><a href="index.html">Rent a Ride</a></h2>
               </div>
             </div>
 
@@ -78,37 +78,44 @@
         <div class="ftco-cover-1 overlay" style="background-image: url('images/hero_1.jpg')">
           <div class="container">
             <div class="row align-items-center">
-              <div class="col-12">
-                <form class="trip-form">
+              <div class="col-9">
+                <form class="trip-form" style="margin-left: 200px; margin-top: 50px;"" method="post" action="./index.php" onsubmit="return validate()">
                   <div class="row align-items-center mb-4">
                     <div class="col-md-6">
                       <h3 style="margin-left:450px; width: 250px" class="m-0">Begin your trip here</h3>
                     </div>
-                    <div class="col-md-6 text-md-right">
-                      <span class="text-primary">32</span> <span>cars available</span></span>
-                    </div>
+                    <br>
                   </div>
-                  <div class="row">
-                    <div class="form-group col-md-3">
+                    <div class="form-group">
                       <label for="cf-1">Where you from</label>
-                      <input style = "border: 2px solid rgb(128, 127, 127);" type="text" id="cf-1" placeholder="Your pickup address" class="form-control">
+                      <input style = "border: 2px solid rgb(128, 127, 127);" type="text" id="cf-1" name="place" placeholder="Your pickup address" class="form-control" required>
                     </div>
-                    <div class="form-group col-md-3">
+                   <div class="form-group">
                       <label for="cf-2">Booking Date</label>
-                      <input style = "border: 2px solid rgb(128, 127, 127);" type="text" id="cf-2" placeholder="Your Journey Date" class="form-control">
+                      <input style = "border: 2px solid rgb(128, 127, 127);" type="date" id="Bdate" name="Bdate" min="2021-10-" placeholder="Your Journey Date" class="form-control" required>
+                      <span ID="bdate_error"></span>
                     </div>
-                    <div class="form-group col-md-3">
-                      <label for="cf-3">Start time</label>
-                      <input style = "border: 2px solid rgb(128, 127, 127);" type="text" id="cf-3" placeholder="Your pickup Time" class="form-control datepicker px-3">
+                    <div class="form-group">
+                      <label for="cf-3">Return Date</label>
+                      <input style = "border: 2px solid rgb(128, 127, 127);" type="date" id="Rdate" name="Rdate" placeholder="Your Return Date" class="form-control" required>
+                      <span ID="rdate_error"></span>
                     </div>
-                    <div class="form-group col-md-3">
-                      <label for="cf-4">Return Time</label>
-                      <input style = "border: 2px solid rgb(128, 127, 127);" type="text" id="cf-4" placeholder="Your Return Time" class="form-control datepicker px-3">
+                    <div class="form-group">
+                      <label for="cf-4">Start time</label>
+                      <input style = "border: 2px solid rgb(128, 127, 127);" type="time" id="sTime" name="sTime" placeholder="Your pickup Time" class="form-control px-3" required>
+                      <span ID="stime_error"></span>
                     </div>
-                  </div>
+                    <br>
+                    <div class="form-group">
+                      <label for="cf-5">Return Time</label>
+                      <input style = "border: 2px solid rgb(128, 127, 127);" type="time" id="eTime" name="eTime" placeholder="Your Return Time" class="form-control px-3" required>
+                      <span ID="etime_error"></span>
+                    </div>
                   <div class="row">
                     <div class="col-lg-6">
-                      <a href="cars.html" style="margin-left:450px;  width:100px; height: 40px;" type="submit" value="Submit" class="btn btn-primary">Submit</a>
+                      <button style="margin-left:450px; width: 100px" type="submit" name="submit" value="Submit" class="btn btn-primary">
+                        Submit
+                      </button>
                     </div>
                   </div>
                 </form>
@@ -119,7 +126,47 @@
         </div>
       </div>
 
-
+    <script>
+      function validate() {
+         
+          var error1 = document.getElementById("bdate_error")
+          var error2 = document.getElementById("rdate_error")
+          var error3 = document.getElementById("stime_error")
+          var error4 = document.getElementById("etime_error")
+           
+    
+            if (document.getElementById("Rdate").value < document.getElementById("Bdate").value) 
+            {
+                error2.innerHTML = "<span style='color: red;'>"+"Please enter valid return date</span>"
+                return false
+            } 
+            else {
+                error2.textContent = ""
+            }
+            if(document.getElementById("Bdate").value == document.getElementById("Rdate").value){
+                if(document.getElementById("eTime").value <= document.getElementById("sTime").value){
+                  error4.innerHTML = "<span style='color: red;'>"+"Please enter valid end time</span>"
+                  return false
+                }
+                else {
+                error4.textContent = ""
+               }
+            }
+            return true
+        }
+               
+      
+    </script>
+    <script>
+      function currentDate(){
+        var date = new Date()
+        var day = date.getDate();
+        var month = date.getMonth()+1;
+        var year = date.getFullYear();
+        var fullDate = year + "-" + month + "-" + day;
+        return fullDate
+      }
+    </script>
     <div class="site-section section mb-5">
       <div class="container">
         <div class="row">
@@ -305,4 +352,3 @@
   </body>
 
 </html>
-
