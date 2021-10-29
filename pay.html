@@ -84,32 +84,31 @@
             <div class="col-lg-5">
               <div class="feature-car-rent-box-1">
                 <h3>Pay Invoice</h3>
-                <form name="payForm" action="" onsubmit="validate(); return false">
+                <form name="payForm" method="POST" action="./pay.php" onsubmit="return validate()">
                 <ul class="list-unstyled">
                   <li>
-                    <input style = "border: 1px solid rgb(128, 127, 127);" type="text" id="amount" placeholder="Payment Amount" class="form-control">
+                    <input style = "border: 1px solid rgb(128, 127, 127);" type="text" id="amount" name="amount" placeholder="Payment Amount" class="form-control">
                     <span ID="amount_error"></span>
                 </li>
                   <li>
-                    <input style = "border: 1px solid rgb(128, 127, 127);" type="text" id="name" placeholder="Name on the card" class="form-control">
+                    <input style = "border: 1px solid rgb(128, 127, 127);" type="text" id="name" name="name" placeholder="Name on the card" class="form-control">
                     <span ID="name_error"></span>
                   </li>
                   <li>
-                    <input style = "border: 1px solid rgb(128, 127, 127);" type="text" id="card_no" placeholder="Card Number" class="form-control">
+                    <input style = "border: 1px solid rgb(128, 127, 127);" type="text" id="card_no" name="card_no" placeholder="Card Number" class="form-control">
                     <span ID="cardno_error"></span>
                   </li>
                   <li>
-                    <input style = "border: 1px solid rgb(128, 127, 127);" type="date" id="expire" placeholder="Expiration date" class="form-control">
+                    <input style = "border: 1px solid rgb(128, 127, 127);" type="month" id="expire" name="expire" placeholder="Expiration date" class="form-control">
                     <span ID="expiry_error"></span>
                   </li>
                   <li>
-                    <input style = "border: 1px solid rgb(128, 127, 127);" type="password" id="code" placeholder="Security Code" class="form-control">
+                    <input style = "border: 1px solid rgb(128, 127, 127);" type="password" id="code" name="code" placeholder="Security Code" class="form-control">
                     <span ID="code_error"></span>
                   </li>
                 </ul>
                 <div style="margin-left: 5px; width: 240px;" class="d-flex align-items-center bg-white p-3">
-                    <!-- <a href="index.html" class="ml-auto btn btn-primary">Register</a> -->
-                    <button style="width: 100px;" class="ml-auto btn btn-primary" type="submit">Pay</button>
+                    <button style="width: 100px;" class="ml-auto btn btn-primary" name="pay" type="submit">Pay</button>
                   </div>
                 </form>
               </div>
@@ -150,54 +149,69 @@
           if (document.getElementById("name").value == "" ) 
           {
               name.innerHTML = "<span style='color: red;'>"+"Please enter your name</span>"
+              return false;
           }
           else if((format.test(document.getElementById("name").value)) || !isNaN(document.getElementById("name").value)){
             name.innerHTML = "<span style='color: red;'>"+"Please enter valid name</span>"
+            return false;
           }
           else{
             name.innerHTML = ""
+           
           }
   
           if (document.getElementById("amount").value == "") 
           {
               amount.innerHTML = "<span style='color: red;'>"+"Please enter amount</span>"
+              return false;
           } 
           else if((format.test(document.getElementById("amount").value)) || isNaN(document.getElementById("amount").value)){
             amount.innerHTML = "<span style='color: red;'>"+"Please enter valid amount</span>"
+            return false;
           }
           else{
             amount.innerHTML = ""
+            
           }
 
           if (document.getElementById("card_no").value == "") 
           {
               cardno.innerHTML = "<span style='color: red;'>"+"Please enter card number</span>"
+              return false;
           } 
           else if((format.test(document.getElementById("card_no").value)) || isNaN(document.getElementById("card_no").value) || document.getElementById("card_no").value.length != 16){
             cardno.innerHTML = "<span style='color: red;'>"+"Please enter valid card number</span>"
+            return false;
           }
           else{
             cardno.innerHTML = ""
+           
           }
 
           if (document.getElementById("expire").value == "") 
           {
               expiry.innerHTML = "<span style='color: red;'>"+"Please enter expiry date</span>"
+              return false;
           } 
           else{
             expiry.innerHTML = ""
+           
           }
 
           if (document.getElementById("code").value == "") 
           {
               code.innerHTML = "<span style='color: red;'>"+"Please enter security code</span>"
+              return false;
           } 
           else if((format.test(document.getElementById("code").value)) || isNaN(document.getElementById("code").value) || document.getElementById("code").value.length != 3){
             code.innerHTML = "<span style='color: red;'>"+"Please enter valid security code</span>"
+            return false;
           }
           else{
             code.innerHTML = ""
+            
           }
+          return true;
         }
       </script>
 
