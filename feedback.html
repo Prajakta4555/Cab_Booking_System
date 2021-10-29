@@ -67,7 +67,7 @@
 
             <div class="col-3 ">
               <div class="site-logo">
-                <h2><a href="index.html">Rent a Ride</a></h2>
+                <h2><a href="login.html">Rent a Ride</a></h2>
               </div>
             </div>
 
@@ -82,7 +82,6 @@
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
                   <li><a href="index.html" class="nav-link">Home</a></li>
                   <li><a href="services.html" class="nav-link">Services</a></li>
-                  <li><a href="cars.html" class="nav-link">Cars</a></li> 
                   <li class="active"><a href="feedback.html" class="nav-link">Feedback</a></li>
                   <li><a href="about.html" class="nav-link">About</a></li>
                   <li><a href="contact.html" class="nav-link">Contact</a></li>
@@ -104,23 +103,23 @@
             <div class="col-lg-5">
                 <div class="feature-car-rent-box-1">
                     <h3 style="margin-left:130px; width: 100px">Feedback</h3>
-                    <form name="FeedbackForm" action="" onsubmit="validate(); return false"> 
+                    <form name="FeedbackForm" action="./feedback.php" onsubmit="return validate()" method="post"> 
                     <ul class="list-unstyled">
                       <li>
-                        <input style = "border: 1px solid rgb(128, 127, 127);" type="text" id="name" placeholder="Enter Name" class="form-control">
+                        <input style = "border: 1px solid rgb(128, 127, 127);" type="text" id="name" name="name"placeholder="Enter name" class="form-control" >
                         <span ID="name_error"></span>
                       </li>
                       <li>
-                        <input style = "border: 1px solid rgb(128, 127, 127);" type="email" id="email" placeholder="Enter Email ID" class="form-control">
+                        <input style = "border: 1px solid rgb(128, 127, 127);" type="email" id="email" name="email" placeholder="Enter Email ID" class="form-control" >
                         <span ID="mail_error"></span>
                       </li>
                       <li>
-                        <textarea style="border: 1px solid rgb(128, 127, 127);" id="feedback" rows="5" cols="50" placeholder="Enter Feedback Message" class="form-control"></textarea>
+                        <textarea style="border: 1px solid rgb(128, 127, 127);" id="feedback" name="msg" rows="5" cols="50" placeholder="Enter Feedback Message" class="form-control" ></textarea>
                         <span ID="msg_error"></span>
                     </li>
                     </ul>
                     <div style="margin-left:130px; width: 100px" class="d-flex align-items-center bg-white p-3">
-                      <button style="width:100px; height: 50px;" class="ml-auto btn btn-primary" type="submit">Submit</button>
+                      <button name="submit" style="width:100px; height: 50px;" class="ml-auto btn btn-primary" type="submit">Submit</button>
                     </div>
                     </form>
                 </div>
@@ -191,14 +190,16 @@
         var name = document.getElementById("name_error")
         var email = document.getElementById("mail_error")
         var msg = document.getElementById("msg_error")
-        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+        var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;1
 
         if (document.getElementById("name").value == "" ) 
         {
             name.innerHTML = "<span style='color: red;'>"+"Please enter your name</span>"
+            return false;
         }
         else if((format.test(document.getElementById("name").value)) || !isNaN(document.getElementById("name").value)){
           name.innerHTML = "<span style='color: red;'>"+"Please enter valid name</span>"
+          return false;
         }
         else{
           name.innerHTML = ""
@@ -207,6 +208,7 @@
         if (document.getElementById("email").value == "") 
         {
             email.innerHTML = "<span style='color: red;'>"+"Please enter your mail</span>"
+            return false;
         } 
         else{
           email.innerHTML = ""
@@ -215,11 +217,13 @@
         if (document.getElementById("feedback").value == "") 
         {
             msg.innerHTML = "<span style='color: red;'>"+"Please enter your message</span>"
+            return false;
         } 
         else{
           msg.innerHTML = ""
-        }
 
+        }
+        return true;
       }
     </script>
 
