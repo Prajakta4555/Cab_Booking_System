@@ -22,6 +22,7 @@ if(isset($_POST['register']))
         }
         else 
         {
+        // echo  "<script>alert('Data inserted Successfully');</script>";
         header("Location: ./login.html");
         error_reporting(0);
         }
