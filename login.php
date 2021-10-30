@@ -12,6 +12,7 @@
         if($res = mysqli_query($link, $sql)){
             $row = mysqli_fetch_row($res);
             if($row[4] == $Password){
+                setcookie("user", "$ID");  
                 header("Location: ./index.html");
                 error_reporting(0);
             }
