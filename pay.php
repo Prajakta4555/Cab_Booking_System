@@ -15,6 +15,7 @@ if(isset($_POST['pay']))
         $expire = $_POST['expire'];
         $code = (int)$_POST['code'];
         $bill_date = date("Y-m-d");
+        $customer = $_COOKIE["user"];
 
         $sql1 = "INSERT INTO bill_details(bill_date, bill_amt, card_name, card_no, card_exp_date, security_code) VALUES ('$bill_date' , '$amount', '$name', '$card_no', '$expire', '$code')";
         if(!mysqli_query($conn,$sql1))
