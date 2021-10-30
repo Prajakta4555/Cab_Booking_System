@@ -64,6 +64,7 @@
                   <li><a href="feedback.html" class="nav-link">Feedback</a></li>
                   <li><a href="about.html" class="nav-link">About</a></li>
                   <li><a href="contact.html" class="nav-link">Contact</a></li>
+                  <li><a href="logout.php" class="nav-link">Log Out</a></li>
                 </ul>
               </nav>
             </div>
@@ -92,7 +93,7 @@
                     </div>
                    <div class="form-group">
                       <label for="cf-2">Booking Date</label>
-                      <input style = "border: 2px solid rgb(128, 127, 127);" type="date" id="Bdate" name="Bdate" min="2021-10-" placeholder="Your Journey Date" class="form-control" required>
+                      <input style = "border: 2px solid rgb(128, 127, 127);" type="date" id="Bdate" name="Bdate" placeholder="Your Journey Date" class="form-control" min="2021-10-20" required>
                       <span ID="bdate_error"></span>
                     </div>
                     <div class="form-group">
@@ -105,7 +106,6 @@
                       <input style = "border: 2px solid rgb(128, 127, 127);" type="time" id="sTime" name="sTime" placeholder="Your pickup Time" class="form-control px-3" required>
                       <span ID="stime_error"></span>
                     </div>
-                    <br>
                     <div class="form-group">
                       <label for="cf-5">Return Time</label>
                       <input style = "border: 2px solid rgb(128, 127, 127);" type="time" id="eTime" name="eTime" placeholder="Your Return Time" class="form-control px-3" required>
@@ -113,7 +113,7 @@
                     </div>
                   <div class="row">
                     <div class="col-lg-6">
-                      <button style="margin-left:450px; width: 100px" type="submit" name="submit" value="Submit" class="btn btn-primary">
+                      <button style="margin-left:220px; width: 100px" type="submit" name="submit" value="Submit" class="btn btn-primary">
                         Submit
                       </button>
                     </div>
@@ -134,7 +134,7 @@
           var error3 = document.getElementById("stime_error")
           var error4 = document.getElementById("etime_error")
            
-    
+          var b = document.getElementById("Bdate").value;
             if (document.getElementById("Rdate").value < document.getElementById("Bdate").value) 
             {
                 error2.innerHTML = "<span style='color: red;'>"+"Please enter valid return date</span>"
@@ -156,16 +156,6 @@
         }
                
       
-    </script>
-    <script>
-      function currentDate(){
-        var date = new Date()
-        var day = date.getDate();
-        var month = date.getMonth()+1;
-        var year = date.getFullYear();
-        var fullDate = year + "-" + month + "-" + day;
-        return fullDate
-      }
     </script>
     <div class="site-section section mb-5">
       <div class="container">
