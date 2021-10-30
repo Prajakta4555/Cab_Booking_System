@@ -14,15 +14,17 @@ if(isset($_POST['submit']))
         $r_date = $_POST['Rdate'];      
         $s_time = $_POST['sTime'];
         $e_time = $_POST['eTime'];
+        $customer = $_COOKIE["user"];
+        // echo "user:". $_COOKIE["user"];
         
-        $sql1 = "INSERT INTO booking_details(booking_date, return_date, pickup_place, start_time, end_time, booking_amt) VALUES ('$b_date', '$r_date', '$place', '$s_time', '$e_time', 10000)";
+        $sql1 = "INSERT INTO booking_details(booking_date, return_date, pickup_place, start_time, end_time, customer_id) VALUES ('$b_date', '$r_date', '$place', '$s_time', '$e_time','$customer')";
         if(!mysqli_query($conn,$sql1))
         {
         echo  "<script>alert('Failed to enter data');</script>";
         }
         else 
         {
-        header("Location: ./index.html");
+        header("Location: ./cars.php");
         error_reporting(0);
         }
     }
