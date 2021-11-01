@@ -67,7 +67,7 @@
     <br><br>
     <a href="bookingShow.php"><i class="fa fa-asterisk">&nbsp;&nbsp;&nbsp;</i> View bookings</a>
     <br><br>
-    <a href="historyShow.php"><i class="fa fa-user-circle-o">&nbsp;&nbsp;&nbsp;</i> View History</a>
+    <a href="#"><i class="fa fa-user-circle-o">&nbsp;&nbsp;&nbsp;</i> View History</a>
     <br><br>
     <a href="cabShow.php"><i class="fa fa-taxi">&nbsp;&nbsp;&nbsp;</i>View cabs</a>
     <br><br>
@@ -80,15 +80,21 @@
     </div>
 
     <div style="margin-left: 300px; margin-right: 150px;" class="w3-container">
-        <h2><center>Feedbacks of Customers</center></h2><br>
+        <h2><center>History Bookings</center></h2><br>
       
         <table class="w3-table-all">
           <thead>
             <tr style="background-color: #000043;color: white;">
               <th>Sr</th>
-              <th>Customer Email</th>
+              <th>Customer ID</th>
               <th>Customer Name</th>
-              <th>Feedback</th>
+              <!-- <th>Cab ID</th>
+              <th>Driver ID</th> -->
+              <th>Booking ID</th>
+              <th>Booking Date</th>
+              <th>Return Date</th>
+              <th>Booking Amount</th>
+              <th>Bill No</th>
             </tr>
           </thead>
           <?php
@@ -97,14 +103,41 @@
               die("Connection failed: " . $conn->connect_error);
             }
             $count=0;
-            $sql = "SELECT * FROM feedback ORDER BY record_time DESC";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-              while($row = $result->fetch_assoc()) {
-                $count++;
-                  echo  "<tr><td> ". $count."</td><td> ". $row["fb_id"]. "</td><td> " . $row["name"] ."</td><td> ".$row["fb_msg"]."</td></tr> ";
+           
+          $sql3 = "SELECT * FROM customer";
+            
+          $result3 = $conn->query($sql3);
+          if ($result3->num_rows > 0) {
+            while($row3 = $result3->fetch_assoc()) {
+              $count++;
+              $customer_id = $row3["customer_id"];
+              $customer_name = $row3["name"];
+              $sql2 = "SELECT * FROM cab";
+          
+             $sql4 = "SELECT * FROM booking_history where customer_id = '$customer_id'";
+             $result4 = $conn->query($sql4);
+             if ($result4->num_rows > 0) {
+              while($row4 = $result4->fetch_assoc()) {
+                $booking_id = $row4["booking_id"];
+                $booking_date = $row4["booking_date"];
+                $return_date = $row4["return_date"];
+                
+                $sql5 = "SELECT * FROM bill_details where booking_id = '$booking_id'";
+                $result5 = $conn->query($sql5);  
+                
+                if ($result5->num_rows > 0) {
+                  while($row5 = $result5->fetch_assoc()) {
+                    $bill_no = (int)$row5["bill_no"];
+                    $bill_amt = $row5["bill_amt"];
+
+                    echo  "<tr><td> ". $count."</td><td> ".$customer_id . "</td><td> " .$customer_name ."</td><td> ". $booking_id."</td><td> ".$booking_date . "</td><td> " .$return_date ."</td><td> " .$bill_amt ."</td><td> " .$bill_no ."</td></tr> "; 
+                  }
+                }
               }  
-           } 
+            } 
+          }
+        } 
+         
               if($count==0)
               {
                 echo "<tr><td></td><td></td><td>No Records</td><td></td><td></td></tr>";
