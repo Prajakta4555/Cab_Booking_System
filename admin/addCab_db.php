@@ -27,8 +27,7 @@ if(isset($_POST['addBtn']))
 				break;
 			}  
 		}
-		$sql3 = "UPDATE driver SET status='Booked' WHERE driver_id='$driver_id'";
-		$result = $conn->query($sql3);
+		
 
 		$sql = "INSERT INTO cab (cab_id,owner_id,image,model, cab_seats, cab_year,cab_type,status,rent,driver_id) VALUES ('$cab_id','$owner','$file', '$model', '$seats', '$cabyear', '$cab_type','$status', '$rent','$driver_id')";
 		
@@ -38,6 +37,8 @@ if(isset($_POST['addBtn']))
 		}
 		else
 		{
+			$sql3 = "UPDATE driver SET status='Booked' WHERE driver_id='$driver_id'";
+		    $result = $conn->query($sql3);
 			header("Location: ./addCar.php");
             error_reporting(0);
 		}
