@@ -58,7 +58,7 @@
 <div class="w3-sidebar w3-bar-block w3-black w3-card" style="width:250px;">
     <br>
     <a href="main.html"><i class="fa fa-home">&nbsp;&nbsp;&nbsp;</i> Home</a>
-   <br><br>
+    <br><br>
     <a href="addCar.php"><i class="fa fa-car">&nbsp;&nbsp;&nbsp;</i> Add a cab</a>
     <br><br>
     <a href="driver.html"><i class="fa fa-id-card">&nbsp;&nbsp;&nbsp;</i> Add a driver</a>
@@ -66,6 +66,8 @@
     <a href="owner.html"><i class="fa fa-user-circle-o">&nbsp;&nbsp;&nbsp;</i> Add a owner</a>
     <br><br>
     <a href="bookingShow.php"><i class="fa fa-asterisk">&nbsp;&nbsp;&nbsp;</i> View bookings</a>
+    <br><br>
+    <a href="historyShow.php"><i class="fa fa-user-circle-o">&nbsp;&nbsp;&nbsp;</i> View History</a>
     <br><br>
     <a href="cabShow.php"><i class="fa fa-taxi">&nbsp;&nbsp;&nbsp;</i>View cabs</a>
     <br><br>

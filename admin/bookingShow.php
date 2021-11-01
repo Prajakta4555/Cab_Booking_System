@@ -67,6 +67,8 @@
     <br><br>
     <a href="bookingShow.php"><i class="fa fa-asterisk">&nbsp;&nbsp;&nbsp;</i> View bookings</a>
     <br><br>
+    <a href="historyShow.php"><i class="fa fa-user-circle-o">&nbsp;&nbsp;&nbsp;</i> View History</a>
+    <br><br>
     <a href="cabShow.php"><i class="fa fa-taxi">&nbsp;&nbsp;&nbsp;</i>View cabs</a>
     <br><br>
     <a href="driverShow.php"><i class="fa fa-id-card">&nbsp;&nbsp;&nbsp;</i> View Drivers</a>
