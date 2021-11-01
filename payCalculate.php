@@ -18,6 +18,9 @@ else{
     $a = 0;
     $hr = 0;
     $bill = 0;
+    $sql3 = "UPDATE cab SET status='Booked' WHERE cab_id='$cab_id'";
+		$result = $conn->query($sql3);
+
     $sql1 = "UPDATE customer SET cab_id = '$cab_id' WHERE customer_id = '$customer_id'";
     if(!mysqli_query($conn,$sql1)){
         echo  "<script>alert('Failed to enter data');</script>";

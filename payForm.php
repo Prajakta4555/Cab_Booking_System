@@ -84,12 +84,13 @@
             <div class="col-lg-5">
               <div class="feature-car-rent-box-1">
                 <h3>Pay Invoice</h3>
-                <?php
+                <?php 
                   echo '<h5>Booking ID : '.$_GET['id'].'</h5>';
                ?>
                 <form name="payForm" method="POST" action="./pay.php" onsubmit="return validate()">
                 <ul class="list-unstyled">
                   <?php
+                      setcookie("bill",$_GET['bill']);
                       echo '<li>
                       <input style = "border: 1px solid rgb(128, 127, 127);" type="text" id="amount" name="amount" value="'.$_GET['bill'].'" class="form-control" disabled>
                       <span ID="amount_error"></span>
