@@ -1,4 +1,4 @@
-# Cab_Booking_System
+# Cab Booking System
 ## Problem Statement  
   The problem statement of our project is to develop an online process of Cab
 Booking Service. Currently, customers need to make a manual call in order
@@ -27,3 +27,9 @@ shown to admin in the customer service section to do further
 improvements in the services.
 9. Admin can see all the cab bookings and other records to its dashboard
 portal after login and filter the booking according to cabs or driver etc.
+
+## E-R Diagram
+<img src = "images/ER.png" width=750 />
+
+## Relational Schema
+<img src = "images/Relational_Schema.png" width=750 />
